@@ -166,6 +166,7 @@ header::before {
 }
 
 .card-projects {
+    place-self: center;
     align-self: start;
     display: flex;
     flex-direction: column;
