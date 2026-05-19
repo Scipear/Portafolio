@@ -5,19 +5,141 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
         <title>Portafolio</title>
     </head>
 
     <body>
         <header>
-            <h1>Portafolio</h1>
+            <article class="portfolio-header">
+                <section class="titles-header">
+                    <h1>CÉSAR PERAZA</h1>
+                    <p>Ingeniero Informático</p>
+                </section>
+                <section class="buttons-header">
+                    <a href="./assets/CESAR_PERAZA_CV.pdf" download="CESAR_PERAZA_CV.pdf" class="button-design">DESCARGAR CV</a>
+                    <a href="#projects" class="button-design">VER PROYECTOS</a>
+                </section>
+            </article>
         </header>
 
         <main>
-            <p>Hola Mundo</p>
+            <article class="about-me-article">
+                <section class="text-section">
+                    <h2>¿QUIÉN SOY?</h2>
+                    <p>¡Hola! Soy César Peraza, un estudiante de ingeniería informática apasionado por la tecnología 
+                        y el desarrollo de software. Me encanta resolver problemas y crear soluciones innovadoras que 
+                        faciliten la vida de las personas en la comunidad.</p>
+
+                    <p>Durante mi formación, he tenido la oportunidad de trabajar en distintos proyectos que me han
+                        permitido desarrollar mis habilidades en programación, análisis de sistemas y desarrollo de
+                        software.</p>
+
+                    <p>Mi objetivo es seguir creciendo profesionalmente y contribuir al desarrollo de la tecnología
+                        para crear un futuro más eficiente.</p>
+                </section>
+                <section class="picture-section">
+                    <img src="./assets/Me.png" alt="Fotografía de César Peraza, desarrollador del portafolio"/>
+                </section>
+            </article>
+
+            <article id="projects" class="projects-article">
+                <section class="title-projects">
+                    <h2>PROYECTOS</h2>
+                </section>
+                <section class="projects-section">
+                    <section class="card-projects">
+                        <img src="./assets/Imagen_3.jpeg" alt="Imagen de la pantalla de seleccion de personaje del proyecto Snake Multijugador Online">
+                        <section class="info-projects">
+                            <h3>SUBA APP</h3>
+                            <p>2026 - TypeScript, MongoDB</p>
+                            <p class="description">Trabajé junto a un equipo en el desarrollo de una aplicación móvil para la gestión del transporte público en
+                                Ciudad Guayana como proyecto final para la asignatura Ingeniería del Software II. Desarrollé parte del backend
+                                utilizando TypeScript, el framework Fastify y MongoDB para integrar la gestión de conductores y el control de la
+                                boletería al proyecto.</p>
+                        </section>
+                        <a href="https://github.com/AnDoor/SUBAPP-Backend" class="button-design">VISITAR REPOSITORIO</a>
+                    </section>
+
+                    <section class="card-projects">
+                        <img src="./assets/Imagen_4.jpeg" alt="Imagen de la pantalla de seleccion de personaje del proyecto Snake Multijugador Online">
+                        <section class="info-projects">
+                            <h3>PÁGINA WEB PARA FARMACIA</h3>
+                            <p>2025 - PHP, Laravel, MySQL</p>
+                            <p class="description">Estuve junto a un equipos trabajando en una página web para la venta de medicamentos y gestión
+                                administrativa de una farmacia ficticia como proyecto final para la asignatura Sistemas de Bases de Datos I.
+                                Participé en el desarrollo Full Stack de la página utilizando el framework Laravel y me encargué del análisis y
+                                modelado de la base de datos.</p>
+                        </section>
+                        <a href="https://github.com/Scipear/Farmacia-FAAS" class="button-design">VISITAR REPOSITORIO</a>
+                    </section>
+
+                    <section class="card-projects">
+                        <img src="./assets/image_2.png" alt="Imagen de la pantalla de seleccion de personaje del proyecto Snake Multijugador Online">
+                        <section class="info-projects">
+                            <h3>SNAKE MULTIJUGADOR ONLINE</h3>
+                            <p>2024 - Java</p>
+                            <p class="description">Lideré un equipo encargado de desarrollar una recreación del clásico juego Snake, añadiendo una función de
+                                multijugador online como proyecto final para la asignatura Técnicas de Programación III. Me encargué de la
+                                creación e integración de los gráficos, el diseño de los diagramas de casos de uso y de clases, la lógica del
+                                videojuego y el manejo de sockets para el funcionamiento del modo multijugador.
+                                </p>
+                        </section>
+                        <a href="https://github.com/Scipear/Snake_FinalFinalAhoraSi" class="button-design">VISITAR REPOSITORIO</a>
+                    </section>
+                </section>
+            </article>
         </main>
 
+        <footer>
+            <p>César Peraza</p>
+            <div class="footer-social-media">
+                <a href="https://github.com/Scipear"><img src="./assets/Github.svg" alt="Logo de Github"/></a>
+                <a href="https://www.linkedin.com/in/césar-peraza-5ba785271/"><img src="./assets/Linkedin.svg" alt="Logo de Linkedin"/></a>
+            </div>
+            <p>Cesarlpr2003@gmail.com</p>            
+        </footer>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const descriptions = document.querySelectorAll(".info-projects .description");
+                
+                descriptions.forEach(desc => {
+                    if (desc.scrollHeight > desc.clientHeight) {
+                        const btn = document.createElement("button");
+                        btn.textContent = "Ver más";
+                        btn.classList.add("btn-read-more");
+                        
+                        desc.parentNode.insertBefore(btn, desc.nextSibling);
+                        
+                        const clampedHeight = desc.clientHeight;
+                        
+                        btn.addEventListener("click", () => {
+                            const isExpanded = desc.classList.contains("expanded");
+                            
+                            if (!isExpanded) {
+                                desc.style.maxHeight = clampedHeight + "px";
+                                desc.classList.add("expanded");
+                                void desc.offsetHeight;
+                                desc.style.maxHeight = desc.scrollHeight + "px";
+                                btn.textContent = "Ver menos";
+                            } else {
+                                desc.style.maxHeight = clampedHeight + "px";
+                                btn.textContent = "Ver más";
+                                
+                                setTimeout(() => {
+                                    desc.classList.remove("expanded");
+                                    desc.style.maxHeight = "";
+                                }, 400);
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
     </body>
 
 </html>
